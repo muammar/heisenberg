@@ -118,34 +118,3 @@ print ('alfa,alfa contrib')
 print ('')
 print np.sum(presumtps)
 
-
-
-##########
-###########print hamiltonian
-##########
-##########For idx,j in enumerate(bra):
-##########    print ('')
-##########    print ('')
-##########    print ('')
-##########    print 'iter '+str(idx+1)
-##########    for idy,k in enumerate(bra):
-##########        subs=np.matrix(j)-np.matrix(k)
-##########        print 'subs'
-##########        print subs
-##########        print ('producto punto')
-##########        print np.dot(j,k)
-##########        print ('indices')
-##########        print idx,idy
-###########       if np.dot(j,k) == 0 and np.sum(j) != nelec and np.sum(j) != -nelec:
-##########        #hamiltonian.itemset((idx,idy),1)
-##########
-##########Print hamiltonian
-##########
-##########"""
-##########Import numpy as np
-###########import array as numpy array
-##########Npcombinations=np.asarray(pcombinations)
-##########Shape=npcombinations.shape
-##########
-##########Print shape
-##########"""
