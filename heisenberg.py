@@ -3,30 +3,26 @@
 import itertools as it
 import numpy as np
 
-###myarray = [1,1,1,1]
-###
-###combinations = it.combinations(myarray,2)
-###
-###pcombinations=[]
-###for e in combinations:
-###    pcombinations.append(e)
-###
-###print pcombinations
-
 
 # This is the basis state for the spin
-nelec=14
+nelec=4
+j2=0.1   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
 bc='obc'
 preket=list(it.product([1,-1], repeat=nelec))
-bra=list(it.product([1,0], repeat=nelec))
-
+prebra=list(it.product([1,0], repeat=nelec))
+print prebra
 # Convert list of tuples to list of lists
 
 """
 Ms partition
 """
+bra=[]
+for idx,i in enumerate(preket):
+    if np.sum(i) == 0:
+        bra.append(prebra[idx])
 
+print bra
 brams=[]
 for i in bra:
     brams.append(np.sum(i))
@@ -45,13 +41,16 @@ for idx,i in enumerate(bra):
 #                print diff
                  diffn= np.squeeze(np.asarray(diff))
                  order=np.flatnonzero(diffn)
-#                print order
+                 print order
                  if bc == 'pbc':
                      if order[1]-order[0] == 1 or  order[1]-order[0] == nelec-1: #PBC
                          ovm.itemset((idx,idy),1)
                  else:
                      if order[1]-order[0] == 1:
-                         ovm.itemset((idx,idy),1)
+                         if order[0] % 2== 0:
+                             ovm.itemset((idx,idy),1)
+                         else:
+                             ovm.itemset((idx,idy),j2)
 
 """
 Define pairs
@@ -66,12 +65,18 @@ prediagonal=[]
 expec=[]
 for idx,j in enumerate(bra):
     elemd=[]
+    suma=0
     for i1, i2 in pairs(j):
-#       print i1, i2
-        if i1 == i2:
-            elemd.append(0.5)
+#       print suma, i1, i2
+        if suma % 2 == 0:
+            r = 1.0
         else:
-            elemd.append(-0.5)
+            r = j2
+        if i1 == i2:
+            elemd.append(0.5*r)
+        else:
+            elemd.append(-0.5*r)
+        suma=suma+1
     prediagonal.append(elemd)
 for xx in prediagonal:
     expec.append(np.sum(xx))
@@ -84,7 +89,7 @@ for idd,i in enumerate(prediagonal):
     #print type(i)
     ovm.itemset((idd,idd),j)
 
-#print ovm
+print ovm
 
 from scipy import linalg as LA
 e_vals, e_vecs = LA.eigh(ovm)
