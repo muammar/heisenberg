@@ -9,7 +9,8 @@ nelec=4
 j2=0.1   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
 bc='obc'
-preket=list(it.product([1,-1], repeat=nelec))
+ms=0
+preket=list(it.product([0.5,-0.5], repeat=nelec))
 prebra=list(it.product([1,0], repeat=nelec))
 print prebra
 # Convert list of tuples to list of lists
@@ -19,7 +20,7 @@ Ms partition
 """
 bra=[]
 for idx,i in enumerate(preket):
-    if np.sum(i) == 0:
+    if np.sum(i) == ms:
         bra.append(prebra[idx])
 
 print bra
