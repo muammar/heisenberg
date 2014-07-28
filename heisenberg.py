@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import itertools as it
 import numpy as np
@@ -120,7 +121,6 @@ for i in idxtomatch:
     presumtps.append(coefsq)
 
 #print presumtps
-print ('alfa,alfa contrib')
 print ('')
-print np.sum(presumtps)
-
+print ('Λ(αα) contribution = ' + str(np.sum(presumtps)))
+#print ('Λ(αα+ββ) contrib = ' + str(np.sum(presumtps)))
