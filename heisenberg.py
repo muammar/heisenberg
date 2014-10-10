@@ -12,7 +12,7 @@ __status__ = "Development"
 """
 
 welcome = """\
--------------------------------------------------------------------------------
+===============================================================================
 
 
 ██╗  ██╗███████╗██╗███████╗███████╗███╗   ██╗██████╗ ███████╗██████╗  ██████╗
@@ -26,7 +26,7 @@ A program to calculate the total position spread tensor using a Heisenberg
 model hamiltonian.
 
 This program has been written by Muammar El Khatib and Edoardo Fertitta.
--------------------------------------------------------------------------------
+===============================================================================
 """
 
 print (welcome)
@@ -70,13 +70,20 @@ brams=[]
 for i in bra:
     brams.append(np.sum(i))
 
-print ('Number of electrons: '+str(nelec))
-print ('   Number of states: '+str(nstate))
-print ('                 Ms: '+str(ms))
+print ('     Number of electrons: '+str(nelec))
+print ('        Number of states: '+str(nstate))
+print ('                      Ms: '+str(ms))
+print ('Number of configurations: '+str(len(prebra)))
 print('')
 #### Commented on 10/10/2014 print brams
 
-print ('Heisenberg hamiltonian matrix:')
+hmatrix = """\
+-------------------------------------------------------------------------------
+                        Heisenberg hamiltonian matrix
+--------------------------------------------------------------------------------
+"""
+print (hmatrix)
+print ('Dimension Ĥ matrix is: '+str(len(bra))+'x'+str(len(bra)))
 print ('')
 ovm = np.zeros(shape=(len(bra),len(bra)))
 #### Commented on 10/10/2014 print bra
@@ -138,6 +145,11 @@ for idd,i in enumerate(prediagonal):
     ovm.itemset((idd,idd),j)
 
 print ovm
+hmatrixend = """\
+-------------------------------------------------------------------------------
+"""
+print (hmatrixend)
+
 print ('')
 
 from scipy import linalg as LA
