@@ -62,8 +62,8 @@ for idx,i in enumerate(bra):
     for idy,j in enumerate(bra):
         if brams[idx] == brams[idy]:
             diff=np.matrix(i)-np.matrix(j)
-            fuckit=np.linalg.norm(diff)**2
-            if int(fuckit) == 2:
+            vectornorm=np.linalg.norm(diff)**2
+            if int(vectornorm) == 2:
 #                print diff
                  diffn= np.squeeze(np.asarray(diff))
                  order=np.flatnonzero(diffn)
