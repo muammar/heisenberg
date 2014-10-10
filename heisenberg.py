@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+__author__ = "Muammar El Khatib; Edoardo Fertitta."
+__copyright__ = "Copyright 2014, Muammar El Khatib; Edoardo Fertitta."
+__credits__ = [""]
+__license__ = "GPL"
+__version__ = "3"
+__maintainer__ = "Muammar El Khatib"
+__email__ = "muammarelkhatib@gmail.com"
+__status__ = "Development"
+"""
 
 import itertools as it
 import numpy as np
