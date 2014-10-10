@@ -23,7 +23,7 @@ welcome = """\
 ╚═╝  ╚═╝╚══════╝╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝
 
 A program to calculate the total position spread tensor using a Heisenberg
-hamiltonian.
+model hamiltonian.
 
 This program has been written by Muammar El Khatib and Edoardo Fertitta.
 -------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ import numpy as np
 
 
 # This is the basis state for the spin
-nelec=4
+nelec=6
 j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
 bc='obc'
