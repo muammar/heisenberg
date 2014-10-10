@@ -70,7 +70,10 @@ brams=[]
 for i in bra:
     brams.append(np.sum(i))
 
-
+print ('Number of electrons: '+str(nelec))
+print ('   Number of states: '+str(nstate))
+print ('                 Ms: '+str(ms))
+print('')
 #### Commented on 10/10/2014 print brams
 
 print ('Heisenberg hamiltonian matrix:')
