@@ -1,4 +1,4 @@
-heisenberg
+Heisenberg
 ==========
 
 This is a python program that evaluates the matrix elements of the Hamiltonian

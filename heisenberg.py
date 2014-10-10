@@ -11,22 +11,6 @@ __email__ = "muammarelkhatib@gmail.com"
 __status__ = "Development"
 """
 
-import itertools as it
-import numpy as np
-
-
-# This is the basis state for the spin
-nelec=4
-j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
-n=float(nelec)
-bc='obc'
-ms=0
-nstate=2    #Number of states to print
-preket=list(it.product([0.5,-0.5], repeat=nelec))
-prebra=list(it.product([1,0], repeat=nelec))
-#### Commented on 10/10/2014 print prebra
-# Convert list of tuples to list of lists
-
 welcome = """\
 -------------------------------------------------------------------------------
 
@@ -46,6 +30,31 @@ This program has been written by Muammar El Khatib and Edoardo Fertitta.
 """
 
 print (welcome)
+
+"""
+When running python in clusters, sometimes you would need to specify the
+site-packages path. If it is your case, just uncomment and configure the two
+lines showed below accordingly.
+"""
+#import sys
+#sys.path.append('/path/to/site-packages/')
+
+import itertools as it
+import numpy as np
+
+
+# This is the basis state for the spin
+nelec=4
+j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
+n=float(nelec)
+bc='obc'
+ms=0
+nstate=2    #Number of states to print
+preket=list(it.product([0.5,-0.5], repeat=nelec))
+prebra=list(it.product([1,0], repeat=nelec))
+#### Commented on 10/10/2014 print prebra
+# Convert list of tuples to list of lists
+
 
 """
 Ms partition
