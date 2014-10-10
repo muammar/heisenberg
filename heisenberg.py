@@ -168,9 +168,14 @@ enumerate(e_vals)
 
 np.set_printoptions(precision=8,suppress=True)
 
+print ('State vector configurations:')
+print ('')
+print (bra)
+print ('')
 for state in range(nstate):
     print ('Results for STATE '+str(state+1)+': ')
     print ('Eigenvalue= '+ str(e_vals[state]))
+    print ('Configuration:')
     print ('Corresponding state vector:')
     print e_vecs[:,state]
     idxtomatch=np.flatnonzero(e_vecs[:,state])
