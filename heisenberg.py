@@ -44,7 +44,7 @@ import numpy as np
 
 
 # This is the basis state for the spin
-nelec=6
+nelec=4
 j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
 bc='obc'
