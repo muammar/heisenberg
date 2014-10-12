@@ -153,8 +153,13 @@ print (hmatrixend)
 
 print ('')
 
-from scipy import linalg as LA
-e_vals, e_vecs = LA.eigh(ovm)
+#from scipy import linalg as LA # Removed in favor of scipy.sparse
+from scipy.sparse import linalg
+import scipy.sparse
+
+#e_vals, e_vecs = LA.eigh(ovm)
+e_vals, e_vecs = scipy.sparse.linalg.eigsh(ovm, k=nstate)
+
 
 """
 This is let just for debugging reasons.
