@@ -41,6 +41,7 @@ lines showed below accordingly.
 
 import itertools as it
 import numpy as np
+import math
 
 
 # This is the basis state for the spin
@@ -48,6 +49,7 @@ nelec=4
 j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
 bc='obc'
+# Set ms = all in order to have all configurations.
 ms=0
 nstate=2    #Number of states to print
 preket=list(it.product([0.5,-0.5], repeat=nelec))
@@ -59,11 +61,13 @@ prebra=list(it.product([1,0], repeat=nelec))
 """
 Ms partition
 """
-bra=[]
-for idx,i in enumerate(preket):
-    if np.sum(i) == ms:
-        bra.append(prebra[idx])
-
+if str.isdigit(str(ms)): #This is for check if ms is digit. Otherwise we calculate all configurations.
+     bra=[]
+     for idx,i in enumerate(preket):
+         if np.absolute(np.sum(i)) == ms:
+             bra.append(prebra[idx])
+else:
+    bra=prebra
 #### Commented on 10/10/2014 print bra
 
 brams=[]
@@ -188,8 +192,12 @@ for state in range(nstate):
     for i in idxtomatch:
         #   print bra[i]
         brarray=np.array(bra[i])
-        positions=(np.flatnonzero(brarray)).astype(float)-(n-1.)/2.
-        #   print positions
+        if np.all(brarray == 0):
+            brarrayn=brarray-1
+            positions=(np.flatnonzero(brarrayn)).astype(float)-(n-1.)/2.
+        else:
+            positions=(np.flatnonzero(brarray)).astype(float)-(n-1.)/2.
+    #   print positions
         sq=np.sum(positions)**2
         coefsq=e_vecs[:,state][i]**2*sq
         #   print coefsq
