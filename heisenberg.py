@@ -63,9 +63,16 @@ Ms partition
 """
 if str.isdigit(str(ms)): #This is for check if ms is digit. Otherwise we calculate all configurations.
      bra=[]
-     for idx,i in enumerate(preket):
-         if np.absolute(np.sum(i)) == ms:
-             bra.append(prebra[idx])
+     if ms != 0:
+        divi=nelec/ms
+        if ms == divi:
+            for idx,i in enumerate(preket):
+                if np.absolute(np.sum(i)) == ms:
+                    bra.append(prebra[idx])
+     else:
+         for idx,i in enumerate(preket):
+             if np.sum(i) == ms:
+                 bra.append(prebra[idx])
 else:
     bra=prebra
 #### Commented on 10/10/2014 print bra
@@ -184,23 +191,27 @@ print ('')
 for state in range(nstate):
     print ('Results for STATE '+str(state+1)+': ')
     print ('Eigenvalue= '+ str(e_vals[state]))
-    print ('Configuration:')
     print ('Corresponding state vector:')
     print e_vecs[:,state]
     idxtomatch=np.flatnonzero(e_vecs[:,state])
     presumtps=[]
     for i in idxtomatch:
-        #   print bra[i]
+     #   print bra[i]
         brarray=np.array(bra[i])
         if np.all(brarray == 0):
             brarrayn=brarray-1
+     #       print brarrayn
+     #       print np.flatnonzero(brarrayn)
             positions=(np.flatnonzero(brarrayn)).astype(float)-(n-1.)/2.
         else:
+     #       print brarray
+     #       print np.flatnonzero(brarray)
             positions=(np.flatnonzero(brarray)).astype(float)-(n-1.)/2.
-    #   print positions
+     #   print 'positions,n'
+     #   print positions,n
         sq=np.sum(positions)**2
         coefsq=e_vecs[:,state][i]**2*sq
-        #   print coefsq
+     #   print coefsq
         presumtps.append(coefsq)
     #print presumtps
     print ('Λ(αα) contribution = ' + str(np.sum(presumtps)))
