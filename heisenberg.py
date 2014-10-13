@@ -41,7 +41,6 @@ lines showed below accordingly.
 
 import itertools as it
 import numpy as np
-import math
 
 
 # This is the basis state for the spin
@@ -49,7 +48,7 @@ nelec=4
 j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
 bc='obc'
-# Set ms = all in order to have all configurations.
+# Set ms = 'all' in order to have all configurations.
 ms=0
 nstate=2    #Number of states to print
 preket=list(it.product([0.5,-0.5], repeat=nelec))
@@ -61,20 +60,26 @@ prebra=list(it.product([1,0], repeat=nelec))
 """
 Ms partition
 """
-if str.isdigit(str(ms)): #This is for check if ms is digit. Otherwise we calculate all configurations.
-     bra=[]
+bra=[]
+if isinstance(ms,str):
+    bra=prebra
+else:
      if ms != 0:
         divi=nelec/ms
         if ms == divi:
             for idx,i in enumerate(preket):
-                if np.absolute(np.sum(i)) == ms:
+                if np.absolute(np.sum(i)) == ms or np.absolute(np.sum(i)) == -ms:
+                    bra.append(prebra[idx])
+                elif np.sum(i) == ms:
+                    bra.append(prebra[idx])
+        else:
+            for idx,i in enumerate(preket):
+                if np.sum(i) == ms:
                     bra.append(prebra[idx])
      else:
          for idx,i in enumerate(preket):
              if np.sum(i) == ms:
                  bra.append(prebra[idx])
-else:
-    bra=prebra
 #### Commented on 10/10/2014 print bra
 
 brams=[]
