@@ -47,7 +47,8 @@ import numpy as np
 nelec=4
 j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
-bc='pbc'
+# 'obc' for open boundary conditions, and 'pbc' for periodic boundary conditions
+bc='obc'
 # Set ms = 'all' in order to have all configurations.
 ms=0
 nstate=2    #Number of states to print
@@ -91,6 +92,11 @@ print ('              Number of states: '+str(nstate))
 print ('                            Ms: '+str(ms))
 print ('     Configurations for Ms = '+str(ms)+': '+str(len(bra)))
 print ('Total number of configurations: '+str(len(prebra)))
+print ('        Degree of dimerization: '+str(j2))
+if bc =='pbc':
+    print ('Periodic boundary conditions are used.')
+else:
+    print ('Open boundary conditions are used.')
 print('')
 #### Commented on 10/10/2014 print brams
 
