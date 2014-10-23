@@ -47,7 +47,7 @@ import numpy as np
 nelec=4
 j2=1.0   # This is the RATIO j2/j1 (low value high dimerization)
 n=float(nelec)
-bc='obc'
+bc='pbc'
 # Set ms = 'all' in order to have all configurations.
 ms=0
 nstate=2    #Number of states to print
@@ -127,11 +127,16 @@ for idx,i in enumerate(bra):
 """
 Define pairs
 """
-def pairs(lst):
-    for i in range(1, len(lst)):
-        yield lst[i-1], lst[i]
-        if bc == 'pbc':
-            yield lst[-1], lst[0]
+
+if bc == 'obc':
+   def pairs(lst):
+       for i in range(1, len(lst)):
+           yield lst[i-1], lst[i]
+else:
+    def pairs(lst):
+        n = len(lst)
+        for i in range(n):
+            yield lst[i],lst[(i+1)%n]
 
 prediagonal=[]
 expec=[]
@@ -150,6 +155,8 @@ for idx,j in enumerate(bra):
             elemd.append(-0.5*r)
         suma=suma+1
     prediagonal.append(elemd)
+
+
 for xx in prediagonal:
     expec.append(np.sum(xx))
 #print expec
