@@ -51,7 +51,7 @@ n=float(nelec)
 bc='obc'
 # Set ms = 'all' in order to have all configurations.
 ms=0
-nstate=2    #Number of states to print
+nstate=6    #Number of states to print
 preket=list(it.product([0.5,-0.5], repeat=nelec))
 prebra=list(it.product([1,0], repeat=nelec))
 #### Commented on 10/10/2014 print prebra
@@ -182,12 +182,12 @@ print (hmatrixend)
 
 print ('')
 
-#from scipy import linalg as LA # Removed in favor of scipy.sparse
-from scipy.sparse import linalg
-import scipy.sparse
+from scipy import linalg as LA # Removed in favor of scipy.sparse
+#from scipy.sparse import linalg  # This is faster but only N-1 states are possible to print.
+#import scipy.sparse              # This is faster but only N-1 states are possible to print.
 
-#e_vals, e_vecs = LA.eigh(ovm)
-e_vals, e_vecs = scipy.sparse.linalg.eigsh(ovm, k=nstate)
+e_vals, e_vecs = LA.eigh(ovm)
+#e_vals, e_vecs = scipy.sparse.linalg.eigsh(ovm, k=nstate)  # This is faster but only N-1 states are possible to print.
 
 
 """
