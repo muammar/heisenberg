@@ -8,8 +8,8 @@ the last step, the Total Position Spread tensor is computed.
 
 It evaluates the matrix in open, and periodic boundary conditions.
 
-You can compare the matrix built with this program the results obtained
-[here](http://phyweb.phys.soton.ac.uk/teach/year4/notes/phys6017/Material/Lectures/lecture8.pdf).
+You can compare the matrix built with this program looking at the results
+obtained [here](http://phyweb.phys.soton.ac.uk/teach/year4/notes/phys6017/Material/Lectures/lecture8.pdf).
 
 Citation
 ========
