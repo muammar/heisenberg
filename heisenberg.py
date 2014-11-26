@@ -51,6 +51,7 @@ n=float(nelec)
 bc='obc'
 # Set ms = 'all' in order to have all configurations.
 ms=0
+# Set nstate = 'all' in order to print all eigenvalues.
 nstate=6    #Number of states to print
 preket=list(it.product([0.5,-0.5], repeat=nelec))
 prebra=list(it.product([1,0], repeat=nelec))
@@ -198,14 +199,14 @@ This is let just for debugging reasons.
 #    print e_vecs[:,idx]
 #    print ''
 
-enumerate(e_vals)
-
 np.set_printoptions(precision=8,suppress=True)
 
 print ('State vector configurations:')
 print ('')
 print (bra)
 print ('')
+if nstate == 'all': # This is to print all possible eigenvalues
+    nstate=len(e_vals)
 for state in range(nstate):
     print ('Results for STATE '+str(state+1)+': ')
     print ('Eigenvalue= '+ str(e_vals[state]))
