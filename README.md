@@ -14,5 +14,4 @@ Citation
 All results published used this software should cite the following:
 
 - M. El Khatib, E. Fertitta, "Heisenberg: a program to the matrix calculation
-- of the Heisenberg model in spin chains"
-[![DOI](https://zenodo.org/badge/4178/muammar/heisenberg.png)](http://dx.doi.org/10.5281/zenodo.12904)
+- of the Heisenberg model in spin chains" [![DOI](https://zenodo.org/badge/4178/muammar/heisenberg.png)](http://dx.doi.org/10.5281/zenodo.12904)
