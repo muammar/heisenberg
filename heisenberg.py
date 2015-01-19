@@ -176,6 +176,8 @@ for idd,i in enumerate(prediagonal):
     ovm.itemset((idd,idd),j)
 
 print ovm
+# Uncomment the line below to dump ovm matrix to text file.
+#np.savetxt('ovm.txt', ovm, delimiter=',')
 hmatrixend = """\
 -------------------------------------------------------------------------------
 """
