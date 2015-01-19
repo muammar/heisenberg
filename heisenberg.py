@@ -177,7 +177,7 @@ for idd,i in enumerate(prediagonal):
 
 print ovm
 # Uncomment the line below to dump ovm matrix to text file.
-#np.savetxt('ovm.txt', ovm, delimiter=',')
+np.savetxt('ovm.txt', ovm, delimiter=',',fmt="%.5f")
 hmatrixend = """\
 -------------------------------------------------------------------------------
 """
