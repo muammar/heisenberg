@@ -153,7 +153,10 @@ for idx,j in enumerate(bra):
     for i1, i2 in pairs(j):
 #       print suma, i1, i2
         if suma % 2 == 0:
-            r = 1.0
+            if j2 < 0:
+                r=j2
+            else:
+                r = 1.0
         else:
             r = j2
         if i1 == i2:
