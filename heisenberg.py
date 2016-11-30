@@ -160,12 +160,12 @@ Define pairs
 
 if bc == 'obc':
    def pairs(lst):
-       for i in range(1, len(lst)):
+       for i in xrange(1, len(lst)):
            yield lst[i-1], lst[i]
 else:
     def pairs(lst):
         n = len(lst)
-        for i in range(n):
+        for i in xrange(n):
             yield lst[i],lst[(i+1)%n]
 
 prediagonal=[]
@@ -235,7 +235,7 @@ print (bra)
 print ('')
 if nstate == 'all': # This is to print all possible eigenvalues
     nstate=len(e_vals)
-for state in range(nstate):
+for state in xrange(nstate):
     print ('Results for STATE '+str(state+1)+': ')
     print ('Eigenvalue= '+ str(e_vals[state]))
     print ('Corresponding state vector:')
