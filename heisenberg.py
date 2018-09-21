@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 __author__ = "Muammar El Khatib; Edoardo Fertitta."
@@ -52,7 +52,7 @@ This program has been written by Muammar El Khatib and Edoardo Fertitta.
 ===============================================================================
 """
 
-print (welcome)
+print(welcome)
 
 """
 When running python in clusters, sometimes you would need to specify the
@@ -111,16 +111,16 @@ brams=[]
 for i in bra:
     brams.append(np.sum(i))
 
-print ('           Number of electrons: '+str(nelec))
-print ('              Number of states: '+str(nstate))
-print ('                            Ms: '+str(ms))
-print ('     Configurations for Ms = '+str(ms)+': '+str(len(bra)))
-print ('Total number of configurations: '+str(len(prebra)))
-print ('        Degree of dimerization: '+str(j2))
+print('           Number of electrons: '+str(nelec))
+print('              Number of states: '+str(nstate))
+print('                            Ms: '+str(ms))
+print('     Configurations for Ms = '+str(ms)+': '+str(len(bra)))
+print('Total number of configurations: '+str(len(prebra)))
+print('        Degree of dimerization: '+str(j2))
 if bc =='pbc':
-    print ('Periodic boundary conditions are used.')
+    print('Periodic boundary conditions are used.')
 else:
-    print ('Open boundary conditions are used.')
+    print('Open boundary conditions are used.')
 print('')
 #### Commented on 10/10/2014 print brams
 
@@ -129,9 +129,9 @@ hmatrix = """\
                         Heisenberg hamiltonian matrix
 --------------------------------------------------------------------------------
 """
-print (hmatrix)
-print ('Dimension Ĥ matrix is: '+str(len(bra))+'x'+str(len(bra)))
-print ('')
+print(hmatrix)
+print('Dimension Ĥ matrix is: '+str(len(bra))+'x'+str(len(bra)))
+print('')
 ovm = np.zeros(shape=(len(bra),len(bra)))
 #### Commented on 10/10/2014 print bra
 for idx,i in enumerate(bra):
@@ -160,12 +160,12 @@ Define pairs
 
 if bc == 'obc':
    def pairs(lst):
-       for i in xrange(1, len(lst)):
+       for i in range(1, len(lst)):
            yield lst[i-1], lst[i]
 else:
     def pairs(lst):
         n = len(lst)
-        for i in xrange(n):
+        for i in range(n):
             yield lst[i],lst[(i+1)%n]
 
 prediagonal=[]
@@ -201,15 +201,15 @@ for idd,i in enumerate(prediagonal):
     #print type(i)
     ovm.itemset((idd,idd),j)
 
-print ovm
+print(ovm)
 # Uncomment the line below to dump ovm matrix to text file.
 #np.savetxt('ovm.txt', ovm, delimiter=',',fmt="%.5f")
 hmatrixend = """\
 -------------------------------------------------------------------------------
 """
-print (hmatrixend)
+print(hmatrixend)
 
-print ('')
+print('')
 
 from scipy import linalg as LA # Removed in favor of scipy.sparse
 #from scipy.sparse import linalg  # This is faster but only N-1 states are possible to print.
@@ -229,17 +229,17 @@ This is let just for debugging reasons.
 
 np.set_printoptions(precision=8,suppress=True)
 
-print ('State vector configurations:')
-print ('')
-print (bra)
-print ('')
+print('State vector configurations:')
+print('')
+print(bra)
+print('')
 if nstate == 'all': # This is to print all possible eigenvalues
     nstate=len(e_vals)
-for state in xrange(nstate):
-    print ('Results for STATE '+str(state+1)+': ')
-    print ('Eigenvalue= '+ str(e_vals[state]))
-    print ('Corresponding state vector:')
-    print e_vecs[:,state]
+for state in range(nstate):
+    print('Results for STATE '+str(state+1)+': ')
+    print('Eigenvalue= '+ str(e_vals[state]))
+    print('Corresponding state vector:')
+    print(e_vecs[:,state])
     idxtomatch=np.flatnonzero(e_vecs[:,state])
     presumtps=[]
     for i in idxtomatch:
